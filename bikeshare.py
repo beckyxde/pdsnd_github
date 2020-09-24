@@ -17,14 +17,14 @@ def get_filters(city, month, day):
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     cities: ['Chicago','New York City','Washington']
     months: ['January', 'February', 'March', 'April', 'May', 'June']
     days:{'M':'Monday', 'T': 'Tuesday', 'W':'Wednesday', 'Th':'Thursday', 'F':'Friday'}
-    # TO DO: get user input for city (chicago, new york city, washington). 
+    # TO DO: get user input for city (chicago, new york city, washington).
     #HINT: Use a while loop to handle invalid inputs
-    
-    
+
+
     while True:
         city = input("Would you like to see the data for chicago, new york city or washington?").lower()
         if city == 'chicago':
@@ -38,28 +38,28 @@ def get_filters(city, month, day):
           break
         else:
           print('I am sorry, I did not catch that. Please type your answer again')
-          
+
 
     # TO DO: get user input for month (all, january, february, ... , june)
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)       
+    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         time = input('Would you like to filter the data by month, day, both, or not at all? Type "none" for no time filter.').lower()
         if time == 'month':
           month = input('Which month? January, February , March , April , May , or June?').lower()
           break
-          
+
         elif time == 'day':
           day = input('Which day? Please type your response as a letter value. (M , T, W, Th, F, Sa, Su)').lower()
           break
-            
+
         elif time == 'both':
           month = input('Which month? January, February , March , April , May , or June?').lower()
           day = input('Which day? Please type your response as a letter value. (M , T, W, Th, F, Sa, Su)').lower()
           break
-        
+
         elif time == 'none':
           break
-        
+
         else:
             input('I am sorry, I did not catch that. Please type your answer again').lower()
             break
@@ -85,7 +85,7 @@ def load_data(city, month, day):
 
      # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
-    
+
       # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
@@ -98,7 +98,7 @@ def load_data(city, month, day):
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-        
+
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
 
@@ -113,9 +113,9 @@ def load_data(city, month, day):
   #Step3: -----------------------------------------------------------------------
    # print('Would like to see the raw data of your selected filters? -Yes or No')
    # print('Would like to see 5 more rows of the data?')
-    
-    
+
     def raw_data(df):
+        """Displays 5 lines of raw data upon request by the user."""
         i=0
         user_question=input('Would you like to see the raw data?\ntpye yes or no').lower()
     while user_question in ['yes','y','yep','yea'] and i+5 < df.shape[0]:
@@ -149,8 +149,8 @@ def time_stats(df):
     print('-'*40)
 
 
-#Step5: ---------------------------------------------------------------------    
-    
+#Step5: ---------------------------------------------------------------------
+
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -160,22 +160,22 @@ def station_stats(df):
     # TO DO: display most commonly used start station
     common_start = df['Start station'].mode().index[0]
     print('The most commonly used start station is: {}'.format(common_start))
-   
+
     # TO DO: display most commonly used end station
     common_end = df['End station'].mode().index[0]
     print('The most commonly used end station is: {}'.format(commen_end))
-    
+
     # TO DO: display most frequent combination of start station and end station trip
     combination = df['Start station','End station'].mode().index[0]
     print('The most frequent combination of start and end station is: {}'.format(combination))
-          
-          
+
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
-#Step6: -------------------------------------------------------------------------------    
-    
+#Step6: -------------------------------------------------------------------------------
+
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
@@ -194,8 +194,8 @@ def trip_duration_stats(df):
     print('-'*40)
 
 
-  #Step7:--------------------------------------------------------------------  
-    
+  #Step7:--------------------------------------------------------------------
+
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
@@ -223,10 +223,10 @@ def user_stats(df):
      print('The majority of users are: {}'.format(majority_age_user))
 
     else:
-     print('There is no birth year data for this city.')   
+     print('There is no birth year data for this city.')
 
      print("\nThis took %s seconds." % (time.time() - start_time))
-     print('-'*40)  
+     print('-'*40)
 
   #Step8: -----------------------------------------------------------------------
 
