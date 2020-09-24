@@ -7,7 +7,7 @@
 
 This project uses data provided by Motivate, a bike share system provider for many major cities in the United States, to uncover bike share usage patterns. The functions in this project display system comparisons between three large cities: Chicago, New York City, and Washington, DC."
 
-Datasets:
+### Datasets:
 
 Randomly selected data for the first six months of 2017 are provided for all three cities. All three of the data files contain the same core six (6) columns:
 
@@ -17,6 +17,7 @@ Trip Duration (in seconds - e.g., 776)
 Start Station (e.g., Broadway & Barry Ave)
 End Station (e.g., Sedgwick St & North Ave)
 User Type (Subscriber or Customer)
+
 The Chicago and New York City files also have the following two columns:
 
 Gender
