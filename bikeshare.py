@@ -26,18 +26,13 @@ def get_filters(city, month, day):
 
 
     while True:
-        city = input("Would you like to see the data for chicago, new york city or washington?").lower()
-        if city == 'chicago':
-          pd.read_csv('chicago.csv')
-          break
-        elif city == 'new york city':
-          pd.read_csv('new_york_city.csv')
-          break
-        elif city == 'washington':
-          pd.read_csv('washington.csv')
-          break
+        city = input('Which of these cities do you want to explore : Chicago, New York or Washington? \n> ').lower()
+
+        if city not in CITY_DATA:
+            print("\nInvalid answer\n")
+            continue
         else:
-          print('I am sorry, I did not catch that. Please type your answer again')
+            break
 
 
     # TO DO: get user input for month (all, january, february, ... , june)
